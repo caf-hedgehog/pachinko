@@ -1,0 +1,15 @@
+services:
+  pachinko-fastapi:
+    container_name: pachinko-fastapi
+    tty: true
+    build:
+      context: ./api
+      dockerfile: Dockerfile
+      target: dev
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./:/workspace:cached
+    working_dir: /workspace/api
+    command: uvicorn main:app --host 0.0.0.0 --reload
+    restart: on-failure
