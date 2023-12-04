@@ -7,7 +7,7 @@ router = APIRouter(prefix="/data")
 
 
 @router.get("/fetch", response_model=AnalysisDataFetchResponse)
-async def get_shinfo_data(request: Request):
-    await Fetch().run()
-    print("router", flush=True)
-    return AnalysisDataFetchResponse(status=HTTPStatus.OK, result=1111)
+async def get_shinfo_data(request: Request, target_url: str):
+    html = await Fetch().run(target_url)
+    print(html)
+    return AnalysisDataFetchResponse(status=HTTPStatus.OK, result=111)
