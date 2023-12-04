@@ -1,3 +1,4 @@
+version: '3'
 services:
   pachinko-fastapi:
     container_name: pachinko-fastapi
@@ -11,5 +12,5 @@ services:
     volumes:
       - ./:/workspace:cached
     working_dir: /workspace/api
-    command: uvicorn main:app --host 0.0.0.0 --reload
+    command: "uvicorn main:app --host 0.0.0.0 --log-level debug --reload"
     restart: on-failure
